@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한양대학교 ERICA 학부 2025-2028 교육과정 편성지침</title>
+<style>
+  :root{
+    --navy-900:#0b2340;
+    --navy-800:#0f3160;
+    --navy-700:#15417f;
+    --navy-600:#1a5296;
+    --blue-500:#2d6fbf;
+    --blue-100:#e8f0fb;
+    --green-600:#3a8c5f;
+    --green-100:#e7f5ec;
+    --gold-500:#c9a227;
+    --gold-100:#faf3dd;
+    --ink-900:#1b2430;
+    --ink-700:#3a4453;
+    --ink-500:#5c6779;
+    --line:#dde3ec;
+    --bg:#f4f6fa;
+    --card:#ffffff;
+    --radius:14px;
+    --shadow:0 4px 18px rgba(15,49,96,0.08);
+    --shadow-lg:0 12px 40px rgba(15,49,96,0.18);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink-900);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    padding-top:64px;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Header ---------- */
+  header.topbar{
+    position:fixed;top:0;left:0;right:0;height:64px;z-index:200;
+    background:linear-gradient(90deg,var(--navy-900),var(--navy-700));
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 18px;box-shadow:0 2px 14px rgba(0,0,0,0.18);
+  }
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;min-width:0;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:8px;flex:none;
+    background:var(--gold-500);color:var(--navy-900);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;
+  }
+  .brand-text{display:flex;flex-direction:column;line-height:1.2;overflow:hidden;}
+  .brand-text b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .brand-text span{font-size:11px;color:#bcd0ec;white-space:nowrap;}
+  nav.desktop-nav{display:flex;gap:2px;}
+  nav.desktop-nav a{
+    color:#dce7f7;text-decoration:none;font-size:13.5px;padding:9px 12px;border-radius:8px;white-space:nowrap;
+    transition:background .15s,color .15s;
+  }
+  nav.desktop-nav a:hover, nav.desktop-nav a.active{background:rgba(255,255,255,0.14);color:#fff;}
+  .menu-btn{
+    display:none;background:rgba(255,255,255,0.12);border:none;color:#fff;width:38px;height:38px;border-radius:9px;
+    font-size:18px;cursor:pointer;flex:none;
+  }
+
+  /* ---------- Layout ---------- */
+  .shell{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+  .layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:30px;align-items:start;}
+  aside.toc{
+    position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 8px;
+  }
+  aside.toc .toc-title{font-size:11.5px;letter-spacing:.06em;color:var(--ink-500);font-weight:700;padding:2px 12px 10px;text-transform:uppercase;}
+  aside.toc a{
+    display:block;padding:8px 12px;border-radius:9px;font-size:13.3px;color:var(--ink-700);text-decoration:none;margin-bottom:1px;
+  }
+  aside.toc a.sub{padding-left:24px;font-size:12.5px;color:var(--ink-500);}
+  aside.toc a:hover{background:var(--blue-100);color:var(--navy-800);}
+  aside.toc a.active{background:var(--navy-800);color:#fff;font-weight:600;}
+
+  /* ---------- Mobile drawer ---------- */
+  .backdrop{position:fixed;inset:0;background:rgba(10,20,35,0.5);z-index:249;opacity:0;pointer-events:none;transition:opacity .2s;}
+  .backdrop.show{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:fixed;top:0;left:0;bottom:0;width:78%;max-width:320px;background:#fff;z-index:250;
+    transform:translateX(-100%);transition:transform .25s ease;padding:18px 14px;overflow:auto;
+  }
+  .drawer.show{transform:translateX(0);}
+  .drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding:4px 6px;}
+  .drawer-head b{color:var(--navy-800);font-size:15px;}
+  .drawer-close{background:none;border:none;font-size:20px;color:var(--ink-500);cursor:pointer;}
+  .drawer a{display:block;padding:10px 10px;border-radius:9px;color:var(--ink-700);text-decoration:none;font-size:14px;}
+  .drawer a.sub{padding-left:22px;font-size:13px;color:var(--ink-500);}
+  .drawer a.active{background:var(--blue-100);color:var(--navy-800);font-weight:700;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 420px at 85% -10%, rgba(201,162,39,0.25), transparent 60%),
+      linear-gradient(135deg,var(--navy-900),var(--navy-700) 60%,var(--blue-500));
+    color:#fff;border-radius:0 0 28px 28px;padding:46px 20px 40px;margin-bottom:34px;
+  }
+  .hero-inner{max-width:var(--maxw);margin:0 auto;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);color:#f4e9c9;font-size:12.5px;font-weight:700;
+    padding:6px 13px;border-radius:999px;letter-spacing:.03em;margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(24px,4vw,38px);margin:0 0 10px;font-weight:800;letter-spacing:-0.01em;}
+  .hero p.lead{font-size:clamp(14px,1.7vw,17px);color:#d8e4f6;max-width:640px;margin:0 0 22px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px;}
+  .hero-meta span{
+    background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
+    padding:7px 13px;border-radius:10px;font-size:12.5px;color:#eaf1fc;
+  }
+
+  /* ---------- Content blocks ---------- */
+  main{padding-bottom:60px;min-width:0;}
+  section.doc-section{scroll-margin-top:78px;margin-bottom:46px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .sec-num{
+    flex:none;width:44px;height:44px;border-radius:12px;background:var(--navy-800);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;
+  }
+  .sec-head h2{font-size:clamp(19px,2.6vw,25px);margin:0;color:var(--navy-900);letter-spacing:-0.01em;}
+  .sec-desc{color:var(--ink-500);font-size:13.5px;margin:2px 0 0 58px;}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+  }
+  .card h3{font-size:16px;color:var(--navy-800);margin:0 0 12px;display:flex;align-items:center;gap:8px;}
+  .card h3 .tag{
+    font-size:11px;background:var(--blue-100);color:var(--navy-700);padding:3px 9px;border-radius:999px;font-weight:700;
+  }
+  .card h4{font-size:14px;color:var(--ink-900);margin:16px 0 8px;}
+  .subgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;}
+
+  ul.bullets{margin:0;padding-left:0;list-style:none;}
+  ul.bullets li{
+    position:relative;padding:6px 0 6px 20px;font-size:13.8px;color:var(--ink-700);
+  }
+  ul.bullets li::before{content:"";position:absolute;left:2px;top:15px;width:6px;height:6px;border-radius:2px;background:var(--blue-500);}
+  ul.bullets.dash li::before{background:none;content:"–";left:0;top:5px;color:var(--ink-500);font-weight:700;}
+  ul.bullets li b{color:var(--navy-800);}
+  ul.bullets li ul{margin-top:4px;}
+  ul.bullets li ul li{font-size:13px;color:var(--ink-500);}
+  ul.bullets li ul li::before{background:#a9bcd6;width:5px;height:5px;}
+
+  .callout{
+    background:var(--blue-100);border:1px solid #cddef4;border-radius:11px;padding:14px 16px;
+    font-size:13.6px;color:var(--navy-800);margin:10px 0 16px;
+  }
+  .callout.gold{background:var(--gold-100);border-color:#ecd88a;color:#7a5c07;}
+  .callout b{font-weight:700;}
+
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px;}
+  .pill{background:var(--navy-800);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;}
+  .pill.outline{background:#fff;color:var(--navy-800);border:1.4px solid var(--navy-800);}
+  .pill.g{background:var(--gold-500);color:#3a2c00;}
+
+  table.dtable{width:100%;min-width:640px;border-collapse:collapse;font-size:12.6px;margin:8px 0 4px;}
+  table.dtable caption{text-align:left;font-size:12.5px;color:var(--ink-500);margin-bottom:6px;caption-side:top;}
+  table.dtable th,table.dtable td{border:1px solid var(--line);padding:8px 9px;text-align:center;}
+  table.dtable thead th{background:var(--navy-800);color:#fff;font-weight:700;font-size:12.2px;}
+  table.dtable tbody th{background:#eef2f8;color:var(--navy-800);font-weight:700;}
+  table.dtable tbody tr:nth-child(even){background:#f7f9fc;}
+  table.dtable td.l{text-align:left;}
+  table.dtable td.num{font-variant-numeric:tabular-nums;}
+  .table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  .table-wrap table.dtable{margin:0;}
+  .table-wrap table.dtable th,.table-wrap table.dtable td{border-color:var(--line);}
+  .table-wrap::-webkit-scrollbar{height:8px;}
+  .table-wrap::-webkit-scrollbar-thumb{background:#c7d3e6;border-radius:8px;}
+  .table-note{font-size:11.6px;color:var(--ink-500);margin:8px 0 2px;}
+  .table-note b{color:var(--ink-700);}
+
+  .steps{display:flex;flex-direction:column;gap:0;}
+  .step{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line);}
+  .step:last-child{border-bottom:none;}
+  .step-badge{
+    flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy-800);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;
+  }
+  .step-body{flex:1;min-width:0;}
+  .step-body b{color:var(--navy-800);font-size:14px;}
+  .step-body p{margin:4px 0 0;font-size:13.3px;color:var(--ink-700);}
+
+  .flowchart{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 6px;}
+  .flowchart .fnode{
+    background:var(--navy-800);color:#fff;border-radius:11px;padding:14px 10px;text-align:center;
+    display:flex;flex-direction:column;gap:6px;position:relative;
+  }
+  .flowchart .fnode b{font-size:12.8px;}
+  .flowchart .fnode span{font-size:11px;color:#cfe0f7;font-weight:400;}
+  .flowchart .arrow{display:flex;align-items:center;justify-content:center;color:var(--ink-500);font-size:18px;}
+  .fcaption{font-size:11.8px;color:var(--ink-500);text-align:center;margin-top:6px;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:720px){.two-col{grid-template-columns:1fr;}}
+
+  .badge-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0 4px;}
+  .badge-item{background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center;}
+  .badge-item b{display:block;font-size:13px;color:var(--navy-800);margin-bottom:2px;}
+  .badge-item span{font-size:11.5px;color:var(--ink-500);}
+
+  /* ---------- Diagram-as-HTML components ---------- */
+  .diagram{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:20px;margin:12px 0 6px;}
+  .diagram-banner{
+    background:linear-gradient(90deg,var(--navy-800),var(--navy-600));color:#fff;border-radius:10px;
+    padding:14px 18px;text-align:center;font-weight:800;font-size:15px;margin-bottom:10px;
+  }
+  .diagram-banner span{display:block;font-weight:400;font-size:12px;color:#cfe0f7;margin-top:4px;}
+  .mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0;}
+  @media (max-width:760px){.mission-grid{grid-template-columns:1fr;}}
+  .mission-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 14px;text-align:center;}
+  .mission-card b.title{display:block;color:var(--navy-800);font-size:14px;margin-bottom:2px;}
+  .mission-card .eng{display:block;font-size:11.5px;color:var(--blue-500);font-weight:700;margin-bottom:6px;}
+  .mission-card p{font-size:12.6px;color:var(--ink-700);margin:0;}
+  .strategy-col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;}
+  .strategy-col .st-head{font-weight:800;font-size:12.8px;color:#fff;border-radius:8px;padding:8px 10px;text-align:center;margin-bottom:10px;}
+  .strategy-col ul{margin:0;padding-left:18px;}
+  .strategy-col li{font-size:12.3px;color:var(--ink-700);padding:4px 0;}
+
+  .persona-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;}
+  @media (max-width:900px){.persona-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.persona-grid{grid-template-columns:1fr;}}
+  .persona-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;}
+  .persona-card b{display:block;font-size:13px;color:var(--navy-800);margin-bottom:6px;}
+  .persona-card .pair{font-size:11px;color:var(--ink-700);line-height:1.5;padding:2px 0;border-top:1px dashed var(--line);}
+  .persona-card .pair:first-of-type{border-top:none;}
+  .persona-card .pair span{display:block;color:var(--ink-500);font-size:10px;}
+
+  .innov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 4px;}
+  @media (max-width:900px){.innov-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.innov-grid{grid-template-columns:1fr;}}
+  .innov-card .ihead{color:#fff;font-weight:800;font-size:12.6px;text-align:center;border-radius:8px;padding:9px 6px;margin-bottom:8px;}
+  .innov-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;}
+  .innov-card ul{margin:0 0 8px;padding-left:16px;}
+  .innov-card li{font-size:11.6px;color:var(--ink-700);padding:2px 0;}
+  .innov-card .icap{font-size:11px;color:var(--ink-500);border-top:1px dashed var(--line);padding-top:6px;margin-top:2px;}
+
+  .hex-row{display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0 4px;flex-wrap:wrap;}
+  .hex{
+    background:linear-gradient(135deg,var(--navy-700),var(--navy-900));color:#fff;font-weight:800;font-size:14px;
+    padding:16px 26px;border-radius:12px;text-align:center;min-width:110px;
+  }
+  .hex-dots{color:var(--ink-500);font-size:16px;letter-spacing:2px;}
+
+  .scheme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:stretch;margin:10px 0;}
+  @media (max-width:820px){.scheme-grid{grid-template-columns:1fr;}}
+  .scheme-col-head{
+    background:var(--navy-800);color:#fff;font-weight:800;font-size:12.6px;text-align:center;border-radius:9px;padding:9px 6px;margin-bottom:8px;
+  }
+  .scheme-box{background:#eef2f8;border:1px solid var(--line);border-radius:9px;padding:10px 8px;text-align:center;font-size:12.6px;color:var(--navy-800);font-weight:700;margin-bottom:8px;}
+  .scheme-box.light{background:#fff;font-weight:600;color:var(--ink-700);}
+  .scheme-box.accent{background:var(--blue-500);color:#fff;}
+  .scheme-arrow-row{display:flex;align-items:center;justify-content:center;color:var(--ink-500);font-size:16px;padding:2px 0;}
+  @media (max-width:820px){ .scheme-grid .scheme-arrow-row{transform:rotate(90deg);} }
+
+  footer{
+    background:var(--navy-900);color:#b9c9e2;padding:30px 20px;text-align:center;font-size:12.5px;margin-top:20px;
+  }
+  footer b{color:#fff;}
+
+  .totop{
+    position:fixed;right:18px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--navy-800);color:#fff;
+    border:none;font-size:18px;box-shadow:var(--shadow-lg);cursor:pointer;z-index:150;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+  }
+  .totop.show{opacity:1;pointer-events:auto;}
+  .totop:hover{transform:translateY(-3px);}
+
+  @media (max-width:980px){
+    .layout{grid-template-columns:minmax(0,1fr);}
+    aside.toc{display:none;}
+    nav.desktop-nav{display:none;}
+    .menu-btn{display:flex;align-items:center;justify-content:center;}
+    .flowchart{grid-template-columns:1fr;}
+    .flowchart .arrow{transform:rotate(90deg);}
+  }
+  @media (max-width:560px){
+    body{padding-top:58px;}
+    header.topbar{height:58px;}
+    .hero{padding:34px 16px 30px;}
+    .card{padding:18px 16px;}
+    .sec-desc{margin-left:0;margin-top:8px;}
+    .sec-head{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark">HY</span>
+    <span class="brand-text">
+      <b>한양대학교 ERICA 학부</b>
+      <span>2025–2028 교육과정 편성지침</span>
+    </span>
+  </a>
+  <nav class="desktop-nav">
+    <a href="#sec1">Ⅰ. 개편배경</a>
+    <a href="#sec2">Ⅱ. 비전·전략</a>
+    <a href="#sec3">Ⅲ. 세부목표</a>
+    <a href="#sec4">Ⅳ. 변경사항</a>
+    <a href="#sec5">Ⅴ. 교육과정편성</a>
+    <a href="#sec6">Ⅵ. 편성·개편지침</a>
+    <a href="#sec7">부록</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">☰</button>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head"><b>목차</b><button class="drawer-close" id="drawerClose">✕</button></div>
+  <a href="#top">표지</a>
+  <a href="#sec1">Ⅰ. 2025-2028 교육과정 개편 배경</a>
+  <a href="#sec2">Ⅱ. 비전 및 핵심 전략</a>
+  <a href="#sec3">Ⅲ. 세부 목표 및 개편 방향</a>
+  <a href="#sec4">Ⅳ. 교육과정 주요 변경 사항</a>
+  <a href="#sec5">Ⅴ. 2025-2028 교육과정 체계</a>
+  <a class="sub" href="#sec5-1">1. 이수 체계도</a>
+  <a class="sub" href="#sec5-2">2. 영역별 상세 이수 체계</a>
+  <a class="sub" href="#sec5-3">3. 전공모듈 구성</a>
+  <a class="sub" href="#sec5-4">4. 이수학점 체계</a>
+  <a class="sub" href="#sec5-5">5. 등재가능학점 기준</a>
+  <a href="#sec6">Ⅵ. 전공교육과정 편성 및 개편 지침</a>
+  <a class="sub" href="#sec6-1">1. 개편 기본방향 수립</a>
+  <a class="sub" href="#sec6-2">2. 학과 교육과정 편성 기본지침</a>
+  <a class="sub" href="#sec6-3">3. 학과 교육과정 개편 지침</a>
+  <a class="sub" href="#sec6-4">4. 모듈형 개편 절차 및 가이드</a>
+  <a href="#sec7">부록. 교직과정 안내</a>
+</div>
+
+<div id="top"></div>
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">★ 2024. 05. 제정 · 한양대학교 ERICA 학부</span>
+    <h1>2025–2028 교육과정 편성지침</h1>
+    <p class="lead">창의적 문제해결형 인재 양성을 위한 한양대학교 ERICA 학부 교육과정 개편 방향과 학과(부) 교육과정 편성·개편 지침을 한눈에 정리한 페이지입니다.</p>
+    <div class="hero-meta">
+      <span>📘 원본: 한양대학교 ERICA 학부 2025-2028 교육과정 편성지침 (2024.05)</span>
+      <span>🎯 인재상: 교양인·전문인·실용인·세계인·봉사인</span>
+      <span>🧩 체계: 교양 – 전공 – 비교과 (직무연계 전공모듈)</span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<div class="layout">
+
+<aside class="toc" id="tocDesktop">
+  <div class="toc-title">Contents</div>
+  <a href="#sec1">Ⅰ. 개편 배경</a>
+  <a href="#sec2">Ⅱ. 비전 및 핵심전략</a>
+  <a href="#sec3">Ⅲ. 세부목표·개편방향</a>
+  <a href="#sec4">Ⅳ. 주요 변경사항</a>
+  <a href="#sec5">Ⅴ. 교육과정 체계</a>
+  <a class="sub" href="#sec5-1">이수 체계도</a>
+  <a class="sub" href="#sec5-2">영역별 이수 체계</a>
+  <a class="sub" href="#sec5-3">전공모듈 구성</a>
+  <a class="sub" href="#sec5-4">이수학점 체계</a>
+  <a class="sub" href="#sec5-5">등재가능학점</a>
+  <a href="#sec6">Ⅵ. 편성·개편 지침</a>
+  <a class="sub" href="#sec6-1">개편 기본방향</a>
+  <a class="sub" href="#sec6-2">편성 기본지침</a>
+  <a class="sub" href="#sec6-3">개편 지침</a>
+  <a class="sub" href="#sec6-4">모듈형 개편 절차</a>
+  <a href="#sec7">부록·교직과정</a>
+</aside>
+
+<main>
+
+<!-- ================= SECTION I ================= -->
+<section class="doc-section" id="sec1">
+  <div class="sec-head"><div class="sec-num">Ⅰ</div><h2>2025-2028 교육과정 개편 배경</h2></div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>1. 대외적 요인</h3>
+      <ul class="bullets">
+        <li><b>학령인구 감소</b> — 대학 교육 수요층의 급감으로 학생 유치 경쟁이 심화되고, 무전공(전공자율선택) 등 교육 정책 변화로 학생 전공선택권 강화 중심의 교육 시스템 혁신 필요</li>
+        <li><b>대안교육 등장</b> — 다양한 온라인 대안 교육의 등장으로 대학 교육의 차별화에 대한 진지한 고민 필요</li>
+        <li><b>채용시장 변화</b> — 대규모 공채 제도가 폐지되고 직무 단위의 소규모 수시 채용으로 변화함에 따라 학생들의 직무 능력을 제고할 수 있는 교육 필요</li>
+        <li><b>교육수요 변화</b> — 급변하는 환경에 대응할 수 있는 창의적 문제해결능력 함양을 위한 융합 교육 및 디지털 시대의 인재 양성을 위한 AI·SW 교육의 확대 필요</li>
+        <li><b>사회를 위한 대학의 기여</b> — 기후 위기 등 인류 사회의 지속 가능성에 대한 글로벌 위기감이 증대되고 있으며 사회문제 해결에 대한 대학의 기여 요구 또한 증가</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>2. 대내적 요인</h3>
+      <ul class="bullets">
+        <li><b>ERICA VISION 2030</b> — '창의적 문제해결형 인재 양성'이라는 학부 교육 목표 달성을 위해 경험기반 교육, 4차산업혁명 교육, 사회가치창출 교육, 학생가치중심 교육의 혁신 전략을 반영한 교육과정 필요</li>
+        <li><b>교육수요자 의견 반영</b> — 학생, 산업체 및 지역사회의 요구에 부합하는 산업 연계형 교육 강화</li>
+        <li><b>교육 평가 경쟁력 강화</b> — 발전계획 수립, 교육과정 편성, 평가 및 환류의 교육 선순환 체계를 구축하여 학부 교육의 대외 경쟁력 강화</li>
+        <li><b>ERICA 교육 편제 개편</b> — 2025학년도 교육 편제 개편으로 첨단융합대학, 글로벌문화통상대학, 커뮤니케이션&컬처대학, LIONS칼리지 등이 설치되어 교육과정 개편 반영 필요</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION II ================= -->
+<section class="doc-section" id="sec2">
+  <div class="sec-head"><div class="sec-num">Ⅱ</div><h2>2025-2028 교육과정 비전 및 핵심 전략</h2></div>
+
+  <div class="card">
+    <h3>1. 2025-2028 교육과정 비전</h3>
+
+    <div class="diagram">
+      <div class="diagram-banner">더 나은 세상을 위한 최고의 산학협력 혁신선도대학 | The Best Innovative Univ. for a Better World
+        <span>교육과 연구를 통해 지속가능한 가치를 창출하는 대학</span>
+      </div>
+
+      <div style="text-align:center;font-weight:800;color:var(--navy-800);font-size:15px;margin:14px 0 8px;">3 VALUEs</div>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <b class="title">학생가치중심교육</b>
+          <span class="eng">Education For Student Value</span>
+          <p>학생의 가치를 최우선으로 삼는 대학교육</p>
+        </div>
+        <div class="mission-card">
+          <b class="title">사회가치창출연구</b>
+          <span class="eng">Research For Social Value</span>
+          <p>유무형의 사회적 가치를 창출하는 영향력 있는 대학 연구</p>
+        </div>
+        <div class="mission-card">
+          <b class="title">대학가치실현경영</b>
+          <span class="eng">Management For Univ. Value</span>
+          <p>대학 본연의 가치를 실현하는 실행중심의 대학경영</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;font-weight:800;color:var(--navy-800);font-size:13px;margin:14px 0 8px;">10대 전략</div>
+      <div class="mission-grid">
+        <div class="strategy-col">
+          <div class="st-head" style="background:var(--navy-700);">학생가치중심교육</div>
+          <ul>
+            <li>창의적 문제해결형 인재양성</li>
+            <li>대학원 교육의 전문성 강화</li>
+            <li>인구구조변화시대, 평생교육 강화 대학으로의 전환</li>
+          </ul>
+        </div>
+        <div class="strategy-col">
+          <div class="st-head" style="background:var(--green-600);">사회가치창출연구</div>
+          <ul>
+            <li>글로벌 연구중심대학 도약을 통한 국제적 영향력 강화</li>
+            <li>사회와의 연결성이 강화된 연구생태계 및 학연산클러스터 완성</li>
+            <li>4차 산업혁명시대, Business(기술이전, 기술사업화, 창업)가 강한 대학으로의 전환</li>
+          </ul>
+        </div>
+        <div class="strategy-col">
+          <div class="st-head" style="background:var(--navy-900);">대학가치실현경영</div>
+          <ul>
+            <li>ESG 중심 지속가능경영시스템 구축</li>
+            <li>Digital Transformation 기반 대학의 새로운 Business Model 창출</li>
+            <li>핵심자산의 전략적 육성을 통한 미래성장동력 확보</li>
+            <li>단절과 소외의 시대, 사회공동체의 가치 실현에 공헌하는 봉사</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h4>가. 건학이념에 기반을 둔 인류를 위한 창의적·실용적 학문 후속세대 양성</h4>
+    <ul class="bullets"><li>근면, 정직, 겸손, 봉사의 네 가지 덕목을 바탕으로 건학 이념인 '사랑의 실천'을 구현하기 위한 교육 방안과 교양인·전문인·실용인·세계인·봉사인 양성의 교육 목표를 반영한 인재상 구현 방안의 모색</li></ul>
+    <h4>나. 급변하는 교육 환경 및 사회적 요구를 반영한 교육 체계 혁신화</h4>
+    <ul class="bullets"><li>4차산업혁명 시대에 걸맞은 창의성, 융·복합 능력을 갖춘 실용 인재 양성을 위해 학생 전공능력 및 핵심역량 강화 중심의 교육과정 혁신 추진</li></ul>
+    <h4>다. 지속 가능성 견인을 위한 사회가치창출형 교육과정 개발</h4>
+    <ul class="bullets"><li>사회문제해결에 기여할 수 있는 창의적 문제해결형 인재 양성을 위한 참여형·연계형 교육과정 개발 및 확산</li></ul>
+  </div>
+
+  <div class="card">
+    <h3>2. 2025-2028 교육과정 개편 핵심 전략</h3>
+    <div class="subgrid">
+      <div class="callout"><b>경험기반 교육</b><br>직무 경험을 바탕으로 지적 자극과 전문성을 습득할 수 있는 교육과정</div>
+      <div class="callout"><b>4차산업혁명 교육</b><br>4차산업혁명이 가져올 직무 변화를 준비할 수 있는 교육과정</div>
+      <div class="callout gold"><b>사회가치창출 교육</b><br>학생에게 세상의 발전에 기여할 수 있는 기회를 제공하는 교육과정</div>
+      <div class="callout gold"><b>학생가치중심 교육</b><br>학생의 목소리가 적극적으로 반영된 교육과정 (전공선택권 강화)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION III ================= -->
+<section class="doc-section" id="sec3">
+  <div class="sec-head"><div class="sec-num">Ⅲ</div><h2>2025-2028 교육과정 세부 목표 및 개편 방향</h2></div>
+
+  <div class="card">
+    <div class="diagram">
+      <div class="diagram-banner">건학이념 · "사랑의 실천"
+        <span>개인의 자아를 실현하고 지역사회와 국가, 나아가 인류사회의 번영에 기여하는 인재양성</span>
+      </div>
+
+      <div style="text-align:center;font-weight:800;color:var(--navy-800);font-size:13px;margin:16px 0 8px;">인재상 · 핵심역량</div>
+      <div class="persona-grid">
+        <div class="persona-card"><b>교양인</b>
+          <div class="pair">자기인식<span>Self-awareness</span></div>
+          <div class="pair">자율 책임<span>Self-agency</span></div>
+        </div>
+        <div class="persona-card"><b>전문인</b>
+          <div class="pair">지식<span>Content</span></div>
+          <div class="pair">비판적사고<span>Critical thinking</span></div>
+        </div>
+        <div class="persona-card"><b>실용인</b>
+          <div class="pair">창의<span>Creativity</span></div>
+          <div class="pair">도전<span>Challenge</span></div>
+        </div>
+        <div class="persona-card"><b>세계인</b>
+          <div class="pair">소통<span>Communication</span></div>
+          <div class="pair">협업<span>Collaboration</span></div>
+        </div>
+        <div class="persona-card"><b>봉사인</b>
+          <div class="pair">공감<span>Empathy</span></div>
+          <div class="pair">나눔<span>Sharing</span></div>
+        </div>
+      </div>
+
+      <div class="callout gold" style="text-align:center;margin:16px 0;">
+        <b>전략목표 (ERICA VISION 2030)</b><br>
+        핵심역량과 직무역량을 갖추고 인류사회 번영에 기여하는 "창의적 문제해결형 인재양성"
+      </div>
+
+      <div style="text-align:center;font-weight:800;color:var(--navy-800);font-size:13px;margin:14px 0 8px;">혁신전략</div>
+      <div class="innov-grid">
+        <div class="innov-card">
+          <div class="ihead" style="background:#2d6fbf;">경험기반 교육</div>
+          <ul><li>IC-PBL</li><li>현장실습</li><li>IAB</li><li>산업연계교과</li></ul>
+          <div class="icap">핵심역량기반 교양교육으로 능력과 인성을 겸비한 인재 양성<br>[10개 핵심역량 기반 8개 영역]</div>
+        </div>
+        <div class="innov-card">
+          <div class="ihead" style="background:#3a8c5f;">4차산업혁명 교육</div>
+          <ul><li>융합교육</li><li>4C 역량</li><li>Digital Fluency</li></ul>
+          <div class="icap">직무연계 전공교육으로 직무역량과 핵심역량을 갖춘 인재 양성<br>[9개 대학 / 56개 전공]</div>
+        </div>
+        <div class="innov-card">
+          <div class="ihead" style="background:#c9762e;">사회가치창출 교육</div>
+          <ul><li>인류가 직면한 문제해결에 기여할 수 있는 기회 제공</li></ul>
+          <div class="icap">역량 증진 지원을 위한 비교과 통합설계<br>[10개 핵심역량 기반 통합 설계]</div>
+        </div>
+        <div class="innov-card">
+          <div class="ihead" style="background:#6a4fa0;">학생가치중심 교육</div>
+          <ul><li>학생의견수렴</li><li>유연한 학사운영</li><li>맞춤형지원(진로/학습/생활)</li></ul>
+          <div class="icap">역량 증진 지원을 위한 비교과 통합설계</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;font-weight:800;color:var(--navy-800);font-size:13px;margin:18px 0 4px;">교육체계</div>
+      <div class="hex-row">
+        <div class="hex">교양</div><div class="hex-dots">⋯⋯</div><div class="hex">전공</div><div class="hex-dots">⋯⋯</div><div class="hex">비교과</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:16px;">
+      <div>
+        <h4>가. 전공교육 세부 목표</h4>
+        <ul class="bullets">
+          <li>직무연계 모듈형 전공교육과정 개발</li>
+          <li>사회문제해결역량 교육 체계화</li>
+          <li>융합교육 체계 고도화</li>
+          <li>수요자 중심 교육 혁신</li>
+        </ul>
+      </div>
+      <div>
+        <h4>나. 교양교육 세부 목표</h4>
+        <ul class="bullets">
+          <li>대학 교양 교육의 본질 실현</li>
+          <li>ERICA 교양 교육의 내실화 및 특성화</li>
+          <li>4차 산업혁명시대를 주도할 인재 양성</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. 교육과정 개편 방향 — 가. 전공교육과정 개편 방향</h3>
+
+    <h4>🔹 직무연계 모듈형 전공교육과정 개발</h4>
+    <div class="callout">기존 '과목 중심'에서 학과(부) 대내·외 교육환경, 교육전략을 반영한 '직무 중심'으로 전환하여, 관련 직무에 필요한 전공능력을 함양할 수 있는 '직무연계 모듈형 전공교육과정'으로 개편</div>
+    <ul class="bullets">
+      <li>전공 관련 주요 직무분야 설정 및 해당 직무분야별 모듈 설정</li>
+      <li>직무 전공능력<sup>*</sup> 함양에 필요한 전공 교과목으로 모듈 구성</li>
+      <li>모듈 또는 모듈 내 교과목과 현장실습, 비교과 프로그램 적극 연계 권장</li>
+      <li>기존 'NCS 기반 이수체계도'에서 '직무연계 모듈형 전공교육과정 이수체계도'로 이수 Map을 개편하여 종합적이고 체계적인 진로와 수강지도 자료로 활용</li>
+    </ul>
+    <p style="font-size:11.6px;color:var(--ink-500);margin:2px 0 14px;">* 전공능력: 각 단과대학 또는 계열, 학과의 관련 분야에서 요구하는 직무, 과업, 역할을 수행하는 데 필요한 지식, 기술, 태도를 포함하는 복합적·종합적 능력</p>
+
+    <h4>🔹 사회문제해결역량 교육 체계화</h4>
+    <div class="callout">전공지식을 활용하여 사회문제 해결과 사회발전에 기여할 수 있는 사회가치 사고 함양 및 경험을 제공하는 ESG, SDGs 관련 전공교육과정 구축</div>
+    <ul class="bullets">
+      <li>전공 단위의 ESG, SDGs 관련 교과목 신설 및 교육과정 개편</li>
+      <li>학과(부)별 '사회문제해결형 모듈'을 구성하여 사회가치창출형 전공교육 제공</li>
+    </ul>
+
+    <h4>🔹 융합교육 체계 고도화</h4>
+    <ul class="bullets dash">
+      <li>디지털트랜스포메이션, AI, 빅데이터 관련 융합교육 확대</li>
+      <li>학과 간 융합 또는 공동 '직무연계 모듈' 구성 적극 권장</li>
+      <li>다양한 학사제도 운영을 통한 융합교육 체계 고도화 추진</li>
+    </ul>
+    <ul class="bullets">
+      <li>AI·SW 관련 교육내용 개편, 융합 교과목 신설 등 학과(부) 전공교육에 적극 반영</li>
+      <li>2개 이상의 학과가 공동으로 구성한 '융합형 모듈'을 운영하여 전공교육의 POOL 확장</li>
+      <li>학과 간 전공과목 교류제도(Code Share) 지속 운영</li>
+      <li>전공, 교양, 비교과 프로그램을 연계한 융합교육 구축 추진</li>
+    </ul>
+
+    <h4>🔹 수요자 중심 교육 혁신</h4>
+    <div class="callout">학생(재학생, 졸업생), 산업체, IAB 등 내·외부 교육 수요자의 의견을 적극 수렴하여 교육과정 개편에 반영</div>
+    <ul class="bullets">
+      <li>학과(부)별 희망수업만들기TF 구성 및 학생 의견 수렴, 반영</li>
+      <li>산업연계교육자문위원회(Industry Advisory Board, IAB) 회의 및 자문을 통하여 전공 관련 산업 및 현장에서 요구하는 역량 중심의 교과목 개발 확대</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= SECTION IV ================= -->
+<section class="doc-section" id="sec4">
+  <div class="sec-head"><div class="sec-num">Ⅳ</div><h2>교육과정 주요 변경 사항</h2></div>
+  <p class="sec-desc" style="margin-bottom:14px;">2025-2028 교육과정(2024-2027 교육과정 계승)을 2020-2023, 2016-2019 교육과정과 비교한 표입니다.</p>
+
+  <div class="card">
+    <div class="table-wrap">
+    <table class="dtable" style="min-width:1080px;">
+      <thead>
+        <tr><th style="width:34px;">순번</th><th style="width:110px;">구분</th><th>2025-2028 교육과정<br>(2024-2027 교육과정 계승)</th><th>2020-2023 교육과정</th><th>2016-2019 교육과정</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td class="l"><b>전공교육 체계</b></td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>기존의 '과목 중심'에서 학과(부) 대내·외 교육환경, 교육전략을 반영한 '직무 중심'으로 전환</li>
+              <li>전공 관련 직무에 필요한 전공능력 함양을 위해 '직무연계 모듈형 전공교육과정'으로 개편</li>
+              <li>전공 관련 직무분야에 연계한 학과(부)별 모듈 설정 [일반형 n개, 혁신형-사회문제해결형(일반) 1개, 이외 혁신형 추가 구성 권장]</li>
+              <li>직무 전공능력 함양에 필요한 전공 교과목으로 모듈 구성(모듈당 최소 12학점 이상, 모듈당 IC-PBL 전용 교과목 1개 포함 필수)</li>
+              <li>'직무연계 모듈형 전공교육과정 이수체계도'로 이수 Map 개편</li>
+              <li>'직무연계 모듈형 전공교육과정' 운영 특성에 맞게 전공심화 과목의 의무이수(18~30학점→15~24학점) 학점 조정</li>
+            </ul>
+          </td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>전공기초, 전공핵심, 전공심화 3단계 전공이수체계 확립</li>
+              <li>전공핵심(필수) 폐지</li>
+              <li>전공기초 과목을 학과(부)의 특성에 맞게 지정 (15~30학점)</li>
+              <li>전공심화 과목의 의무이수(18~30학점)를 통해 전공교육의 내실화 도모</li>
+              <li>교양의무이수학점 상향에 따라 전공의무이수학점 일부 축소(66→60학점, 60→54학점)</li>
+              <li>'NCS 기반 이수체계도' 이수 Map 운영</li>
+            </ul>
+          </td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>전공이수학점을 단과대학 특성에 맞게 변경 (72→66학점, 66→60학점)</li>
+              <li>전공핵심과 전공심화의 등재비율을 균형 있게 조정</li>
+              <li>'NCS 기반 이수체계도' 이수 Map 도입</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td><td class="l"><b>사회문제해결역량 교육 활성화</b></td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>전공 단위의 ESG, SDGs 관련 교과목 신설 및 교육과정 개편</li>
+              <li>학과(부)별 '사회문제해결형 모듈' 구성 필수</li>
+            </ul>
+          </td>
+          <td class="l">—</td>
+          <td class="l">—</td>
+        </tr>
+        <tr>
+          <td>3</td><td class="l"><b>융합교육 체계 고도화</b></td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>AI·SW 관련 교육내용 개편, 융합 교과목 신설 등 학과(부) 전공교육에 적극 반영</li>
+              <li>2개 이상의 학과가 공동으로 구성한 '융합형 모듈' 운영</li>
+              <li>전공, 교양, 비교과 프로그램을 연계한 융합교육 구축 추진</li>
+              <li>학과 간 전공과목 교류제도(Code Share) 운영</li>
+            </ul>
+          </td>
+          <td class="l">학과 간 전공과목 교류제도(Code Share) 운영</td>
+          <td class="l">학과 간 전공과목 교류제도(Code Share) 도입</td>
+        </tr>
+        <tr>
+          <td>4</td><td class="l"><b>수요자 중심 교육 혁신</b></td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>학과(부)별 희망수업만들기TF 별도 구성</li>
+              <li>본부 희망수업만들기TF 운영</li>
+              <li>교육수요자 소통위원회(가칭) 운영(예정)</li>
+              <li>산업연계교육자문위원회(Industry Advisory Board, IAB) 운영</li>
+            </ul>
+          </td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>본부 희망수업만들기TF 운영</li>
+              <li>산업연계교육자문위원회(Industry Advisory Board, IAB) 운영</li>
+            </ul>
+          </td>
+          <td class="l">
+            <ul class="bullets" style="margin:0;">
+              <li>본부 희망수업만들기TF 운영</li>
+              <li>산업연계교육자문위원회(Industry Advisory Board, IAB) 도입</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION V ================= -->
+<section class="doc-section" id="sec5">
+  <div class="sec-head"><div class="sec-num">Ⅴ</div><h2>2025-2028 교육과정 체계</h2></div>
+
+  <div class="card" id="sec5-1">
+    <h3>1. 2025-2028 교육과정 이수 체계도</h3>
+    <div class="diagram">
+      <div class="scheme-grid">
+        <div><div class="scheme-col-head">교육과정 구분</div></div>
+        <div><div class="scheme-col-head">영역 구분</div></div>
+        <div><div class="scheme-col-head">이수 구분</div></div>
+        <div><div class="scheme-col-head" style="background:#2d8f9e;">모듈(이수 권장)</div></div>
+
+        <div class="scheme-box light">공통 교육과정</div>
+        <div class="scheme-box light">교양</div>
+        <div class="scheme-box light">교양필수 / 교양선택</div>
+        <div></div>
+
+        <div class="scheme-box light">학과(부) 교육과정</div>
+        <div class="scheme-box light">전공</div>
+        <div class="scheme-box light">전공기초 / 전공핵심 / 전공심화</div>
+        <div class="scheme-box accent">직무연계 전공모듈</div>
+      </div>
+      <p style="font-size:11.6px;color:var(--ink-500);text-align:center;margin:2px 0 0;">전공영역(전공기초·전공핵심·전공심화) 교과목이 직무연계 전공모듈로 연결되며, 모듈 이수가 권장됩니다.</p>
+    </div>
+  </div>
+
+  <div class="card" id="sec5-2">
+    <h3>2. 영역별 상세 이수 체계</h3>
+    <h4>가. 전공영역 교과목</h4>
+    <div class="badge-list">
+      <div class="badge-item"><b>전공기초 (Basic)</b><span>전공과 관련된 기초·탐색과목. 주전공은 반드시 이수해야 하는 필수과목</span></div>
+      <div class="badge-item"><b>전공핵심 (Core)</b><span>전공별 핵심 과목을 풀(Pool)로 개설, 그 안에서 일정 기준 이상 이수</span></div>
+      <div class="badge-item"><b>전공심화 (Advanced)</b><span>난이도가 높거나 최신 이슈를 다루는 상위 과목. 풀(Pool)로 개설·이수</span></div>
+    </div>
+
+    <h4>나. 교양영역 교과목</h4>
+    <div class="badge-list">
+      <div class="badge-item"><b>교양필수</b><span>학교가 전략적으로 지정, 전체 학생이 이수해야 하는 필수과목</span></div>
+      <div class="badge-item"><b>교양선택</b><span>5개 영역: 자기인식·글로벌 소통과 문화·미래기술·기업가정신·창의적 사고</span></div>
+    </div>
+  </div>
+
+  <div class="card" id="sec5-3">
+    <h3>3. 전공모듈 구성</h3>
+    <p style="font-size:13.6px;color:var(--ink-700);"><b>가. 정의</b> — 전공 관련 주요 직무분야를 연계하여, 해당 직무분야에서 요구되는 핵심적인 전공능력을 향상시킬 수 있는 교과목들로 구성한 체계</p>
+
+    <h4>나. 전공모듈 구분 — 1) 모듈 구분</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th style="width:110px;">구분</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td><b>일반형</b></td><td class="l">직무연계 전공능력 함양 기본 모듈 (구성 조건을 충족해야 함)</td></tr>
+        <tr><td><b>혁신형</b></td><td class="l">대학 또는 학과의 특성화 전략을 반영한 혁신형 모듈<br><span style="color:var(--ink-500);">* 사회문제해결형(필수), IC-PBL 특화 유형, 창업특화형, 융합형, 혁신수업형, 공동교육과정형 등</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>2) 혁신형 모듈 구분(예)</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th style="width:120px;">구분</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td><b>사회문제 해결형</b></td><td class="l">모듈 내 IC-PBL 전용 교과목 주제를 SDGs, ESG 관련으로 운영<br>– 일반형: IC-PBL 유형에 상관없이 주제를 SDGs, ESG 관련으로 운영<br>– 현장연계형: IC-PBL M유형(해당 기업, 정부기관 등의 ESG 경영활동과 연계하여 IC-PBL 운영)</td></tr>
+        <tr><td><b>IC-PBL 특화 유형</b></td><td class="l">– 현장실습연계형: IC-PBL M유형 + 해당 기업 현장실습 기회 제공<br>– M유형 특화형: 모듈 내 IC-PBL M유형 전용교과목 2개 이상 구성</td></tr>
+        <tr><td><b>창업특화형</b></td><td class="l">창업교육센터에서 인정하는 전공 창업교과목을 1개 이상 포함한 모듈(전공 관련 창업 지식과 경험을 제공)</td></tr>
+        <tr><td><b>학과 융합형</b></td><td class="l">2개 이상의 학과가 공동으로 만든 모듈</td></tr>
+        <tr><td><b>공동교육과정형</b></td><td class="l">국내·외 타 대학과 공동으로 운영하는 모듈</td></tr>
+        <tr><td><b>혁신수업형(또는 혁신수업)</b></td><td class="l">– 국내·외 타 대학과 공동 운영 토론/IC-PBL 형식의 수업 등<br>– 디지털리터러시 관련 교양필수 교과목에서 습득한 프로그래밍언어를 활용하여 전공 관련 직무에 직접 활용해 볼 수 있는 IC-PBL 형식의 수업 (e.g. 파이썬을 활용한 금융 빅데이터 분석, 스포츠 통계 분석 등)<br>– 집중이수제 등도 활성화 차원에서 논의 가능</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>다. 전공모듈 구성 — 1) 학과(부)별 전공모듈 구성 체계</h4>
+    <div class="callout gold">
+      ✔ 일반형 모듈 n개 <b>'의무'</b> · ✔ 혁신형 – 사회문제해결형(일반) 모듈 1개 <b>'의무'</b> · ✔ 혁신형 모듈 추가 구성 <b>'권장'</b><br>
+      <b>혁신형 모듈 지원계획</b>: 등재 학점 예외, 원격수업(실시간 화상·온라인 녹화) 적극 허용, 성적평가방법(절대평가) 변경, 예산/조교 지원 등 논의 가능 (단, 사회문제해결형-일반 모듈은 지원 대상에서 제외)
+    </div>
+
+    <h4>2) 모듈 기본 구성 원칙</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th style="width:130px;">구분</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td><b>학점 구성</b><br>(전공핵심+전공심화)</td><td class="l"><b>최소 12학점 이상</b> (마이크로전공 부여 가능 기준)<br>* 혁신형 모듈의 경우 학점 구성 기준을 보다 유연하게 적용할 예정</td></tr>
+        <tr><td><b>IC-PBL 교과목 반영</b></td><td class="l">모듈별 IC-PBL 전용 교과목 1개 이상 포함 <b>'권장'</b></td></tr>
+        <tr><td><b>현장실습 연계</b></td><td class="l">현장실습 기관 1개 이상 매칭 <b>'권장'</b> : 학과 차원의 현장실습 기관 발굴(IAB 등 활용)</td></tr>
+        <tr><td><b>비교과 연계</b></td><td class="l">모듈 또는 모듈 내 교과목과 연계하여 전공능력 향상에 기여할 수 있는 비교과 프로그램 1개 이상 매칭 <b>'권장'</b> : 학과 차원의 비교과 프로그램 개발<br><br>* 비교과 — 전공 및 교양 등 정규 교과과정과는 별도로 학생의 역량 향상을 위해 운영되는 학점이 부여되지 않는 교육 프로그램. 우리대학에서는 S-한양핵심역량(10개)과 연계한 비교과 체계를 구축하고 비교과 종합플랫폼(HY-LU-E)을 운영하고 있음 (e.g. 파이썬을 활용한 AI 프로그래밍, 스마트 스피치 솔루션, 비즈니스 영어글쓰기, 각종 교내 경진대회, 공모전 등)</td></tr>
+        <tr><td><b>기타 유의사항</b></td><td class="l">
+          · (전공기초 교과목) 모듈 구성에서 제외<br>
+          · (교과목 중복) 동일 교과목을 2개 이상의 모듈에 중복으로 포함시키는 것은 가급적 지양<br>
+          · (공통성 교과목) 전공기초(필수과목)는 아니지만 학과 대부분의 모듈에서 필요로 하는 공통성 교과목의 경우 모듈 구성에서 제외<br>
+          · (학년별 안배) 모듈 구성 교과목을 학년/학기별로 고르게 편성<br>
+          · (전공핵심/전공심화) 전공핵심/전공심화 비율을 균등히 배분하여 모듈 구성
+        </td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="card" id="sec5-4">
+    <h3>4. 이수학점 체계</h3>
+
+    <h4>가. 졸업이수학점</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th style="width:110px;">졸업학점</th><th>단과대학/학과(부)</th></tr></thead>
+      <tbody>
+        <tr><td><b>231학점</b></td><td class="l">약학대학 약학과 (6년제)</td></tr>
+        <tr><td><b>162학점</b></td><td class="l">공학대학 건축학전공 (5년제)</td></tr>
+        <tr><td><b>140학점</b></td><td class="l">소프트웨어융합대학 (수리데이터사이언스학과 제외)</td></tr>
+        <tr><td><b>130학점</b></td><td class="l">공학대학(건축학전공, 융합시스템공학과, 스마트융합공학부 제외) · 첨단융합대학 · 소프트웨어융합대학 수리데이터사이언스학과 · LIONS칼리지 학생설계전공학부</td></tr>
+        <tr><td><b>126학점</b></td><td class="l">글로벌문화통상대학 · 커뮤니케이션&컬처대학 · 경상대학(회계세무학과 제외) · 디자인대학 · 예체능대학</td></tr>
+        <tr><td><b>120학점</b></td><td class="l">공학대학 융합시스템공학과, 스마트융합공학부 · 경상대학 회계세무학과</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>나. 학기당 최대이수학점</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th rowspan="2">구분</th><th rowspan="2">학기당<br>최대이수학점<br>(전체계열)</th><th colspan="3">추가 이수가능학점</th></tr>
+      <tr><th>다전공자가 타전공(일반선택) 신청 시</th><th>사회봉사 신청 시</th><th>ROTC 필수과목 신청 시</th></tr></thead>
+      <tbody><tr><td>전체학년</td><td>20</td><td>3</td><td>1</td><td>2</td></tr></tbody>
+    </table>
+    </div>
+    <p class="table-note">※ 학기당 최대이수학점은 학칙에 의거하며 변경될 수 있음</p>
+
+    <h4>다. 전체 이수학점</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead>
+        <tr>
+          <th rowspan="2">대학</th><th rowspan="2">학과</th><th rowspan="2">졸업<br>학점</th>
+          <th colspan="5">전공</th><th colspan="3">교양</th><th colspan="2">공통 지정 POOL</th>
+        </tr>
+        <tr>
+          <th>전공기초</th><th>전공핵심</th><th>전공심화</th><th>전공핵심<br>or 전공심화</th><th>전공계</th>
+          <th>교양필수</th><th>교양선택</th><th>계</th>
+          <th>사회봉사</th><th>산학협력교육</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th rowspan="9">공학</th><td class="l">공통</td><td>130</td><td>30</td><td>30</td><td>18</td><td>–</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">건축학전공</td><td>162</td><td>10</td><td>90</td><td>18</td><td>–</td><td>108</td><td>15</td><td>10</td><td>25</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">교통물류공학과</td><td>130</td><td>26</td><td>30</td><td>18</td><td>–</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">전자공학부</td><td>130</td><td>29</td><td>30</td><td>18</td><td>–</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">에너지바이오학과</td><td>130</td><td>24</td><td>30</td><td>18</td><td>–</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">해양융합공학과</td><td>130</td><td>27</td><td>30</td><td>18</td><td>–</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">융합시스템공학과</td><td>120</td><td>21</td><td>–</td><td>–</td><td>81</td><td>81</td><td>1</td><td>6</td><td>7</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">스마트융합공학부<br>(스마트컨스트럭션융합전공 제외)</td><td>120</td><td>–</td><td>–</td><td>–</td><td>96</td><td>96</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">스마트융합공학부 스마트컨스트럭션융합전공</td><td>120</td><td>–</td><td>–</td><td>–</td><td>90</td><td>90</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+
+        <tr><th rowspan="4">소프트웨어융합</th><td class="l">ICT융합학부/인공지능학과</td><td>140</td><td>18</td><td>36</td><td>24</td><td>15</td><td>75</td><td>17</td><td>10</td><td>27</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">컴퓨터학부</td><td>140</td><td>17</td><td>36</td><td>24</td><td>15</td><td>75</td><td>17</td><td>10</td><td>27</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">인공지능학과</td><td>140</td><td>15</td><td>36</td><td>24</td><td>15</td><td>75</td><td>17</td><td>10</td><td>27</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">수리데이터사이언스학과</td><td>130</td><td>24</td><td>30</td><td>18</td><td>12</td><td>60</td><td>17</td><td>10</td><td>27</td><td>1</td><td>3</td></tr>
+
+        <tr><th>약학</th><td class="l">약학과(6년제)</td><td>231</td><td>20</td><td>136</td><td>–</td><td>50</td><td>186</td><td>14</td><td>10</td><td>24</td><td>1</td><td>3</td></tr>
+
+        <tr><th rowspan="6">첨단융합</th><td class="l">신소재반도체공학전공</td><td>130</td><td>28</td><td>30</td><td>18</td><td>12</td><td>60</td><td>23</td><td>10</td><td>33</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">반도체디스플레이공학전공</td><td>130</td><td>22</td><td>30</td><td>18</td><td>12</td><td>60</td><td>23</td><td>10</td><td>33</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">분자의약전공</td><td>130</td><td>30</td><td>30</td><td>18</td><td>12</td><td>60</td><td>23</td><td>10</td><td>33</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">바이오나노공학전공</td><td>130</td><td>30</td><td>30</td><td>18</td><td>12</td><td>60</td><td>23</td><td>10</td><td>33</td><td>1</td><td>6</td></tr>
+        <tr><td class="l">지능정보양자공학전공</td><td>130</td><td>20</td><td>30</td><td>18</td><td>12</td><td>60</td><td>23</td><td>10</td><td>33</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">국방전략기술공학과</td><td>130</td><td>22</td><td>30</td><td>18</td><td>12</td><td>60</td><td>18</td><td>10</td><td>28</td><td>1</td><td>3</td></tr>
+
+        <tr><th>글로벌문화통상</th><td class="l">글로벌문화통상학부</td><td>126</td><td>15</td><td>30</td><td>18</td><td>12</td><td>60</td><td>17</td><td>10</td><td>27</td><td>1</td><td>3</td></tr>
+
+        <tr><th rowspan="2">커뮤니케이션&amp;컬처</th><td class="l">광고홍보학과/미디어학과</td><td>126</td><td>15</td><td>30</td><td>15</td><td>9</td><td>54</td><td>17</td><td>10</td><td>27</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">문화인류학과/문화콘텐츠학과</td><td>126</td><td>15</td><td>30</td><td>18</td><td>12</td><td>60</td><td>17</td><td>10</td><td>27</td><td>1</td><td>3</td></tr>
+
+        <tr><th rowspan="3">경상</th><td class="l">공통</td><td>126</td><td>15</td><td>30</td><td>15</td><td>9</td><td>54</td><td>15</td><td>10</td><td>25</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">경제학부</td><td>126</td><td>15</td><td>30</td><td>15</td><td>9</td><td>54</td><td>17</td><td>10</td><td>27</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">회계세무학과</td><td>120</td><td>15</td><td>–</td><td>–</td><td>81</td><td>81</td><td>14</td><td>6</td><td>20</td><td>–</td><td>–</td></tr>
+
+        <tr><th>디자인</th><td class="l">공통</td><td>126</td><td>15</td><td>30</td><td>18</td><td>12</td><td>60</td><td>17</td><td>10</td><td>27</td><td>1</td><td>3</td></tr>
+
+        <tr><th rowspan="2">예체능</th><td class="l">공통</td><td>126</td><td>14</td><td>30</td><td>18</td><td>12</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>3</td></tr>
+        <tr><td class="l">무용예술학과</td><td>126</td><td>15</td><td>30</td><td>18</td><td>12</td><td>60</td><td>15</td><td>10</td><td>25</td><td>1</td><td>3</td></tr>
+
+        <tr><th rowspan="3">LIONS칼리지</th><td class="l">LIONS자율전공학부(전계열)</td><td>–</td><td>6</td><td>–</td><td>–</td><td>–</td><td>–</td><td>7</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">LIONS자율전공학부(자연계열)</td><td>–</td><td>6</td><td>–</td><td>–</td><td>–</td><td>–</td><td>7</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">LIONS자율전공학부(인문사회계열)</td><td>–</td><td>6</td><td>–</td><td>–</td><td>–</td><td>–</td><td>7</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">
+      ▶ 공학대학 공통: 건축학전공, 교통물류공학과, 전자공학부, 에너지바이오학과, 해양융합공학과, 융합시스템공학과, 스마트융합공학부를 제외한 모든 학과<br>
+      ▶ 경상대학 공통: 경제학부, 회계세무학과를 제외한 모든 학과 · ▶ 예체능대학 공통: 무용예술학과를 제외한 모든 학과<br>
+      ▶ LIONS자율전공학부는 2학년 때 선택한 전공의 이수학점을 따름 (선택한 전공의 1학년 전공기초와 교양필수는 이수학점에서 제외)
+    </p>
+
+    <h4>전공영역 이수학점 (단일전공 / 부전공 / 다중전공 / 복수전공)</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead>
+        <tr>
+          <th rowspan="2">대학</th><th rowspan="2">학과</th><th rowspan="2">졸업<br>학점</th>
+          <th colspan="4">단일전공</th><th colspan="2">부전공</th><th colspan="2">다중전공</th><th rowspan="2">복수전공</th>
+        </tr>
+        <tr><th>전공기초</th><th>전공핵심</th><th>전공심화</th><th>전공계</th><th>주전공</th><th>부전공</th><th>주전공</th><th>다중전공</th></tr>
+      </thead>
+      <tbody>
+        <tr><th rowspan="9">공학</th><td class="l">공통</td><td>130</td><td>30</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">건축학전공</td><td>162</td><td>10</td><td>90</td><td>18</td><td>108</td><td>108(90)</td><td>54(54)</td><td>108(90)</td><td>108(90)</td><td>108(90)</td></tr>
+        <tr><td class="l">교통물류공학과</td><td>130</td><td>26</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">전자공학부</td><td>130</td><td>29</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">에너지바이오학과</td><td>130</td><td>24</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">해양융합공학과</td><td>130</td><td>27</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">융합시스템공학과</td><td>120</td><td>21</td><td>–</td><td>–</td><td>81</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">스마트융합공학부(스마트컨스트럭션융합전공 제외)</td><td>120</td><td>–</td><td>–</td><td>–</td><td>96</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">스마트융합공학부 스마트컨스트럭션융합전공</td><td>120</td><td>–</td><td>–</td><td>–</td><td>90</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+
+        <tr><th rowspan="4">소프트웨어융합</th><td class="l">ICT융합학부/인공지능학과</td><td>140</td><td>18</td><td>36</td><td>24</td><td>75</td><td>45(36)</td><td>30(9)</td><td>45(36)</td><td>39(24)</td><td>39(24)</td></tr>
+        <tr><td class="l">컴퓨터학부</td><td>140</td><td>17</td><td>36</td><td>24</td><td>75</td><td>45(36)</td><td>30(9)</td><td>45(36)</td><td>39(24)</td><td>39(24)</td></tr>
+        <tr><td class="l">인공지능학과</td><td>140</td><td>15</td><td>36</td><td>24</td><td>75</td><td>45(36)</td><td>30(9)</td><td>45(36)</td><td>39(24)</td><td>39(24)</td></tr>
+        <tr><td class="l">수리데이터사이언스학과</td><td>130</td><td>24</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+
+        <tr><th>약학</th><td class="l">약학과(6년제)</td><td>231</td><td>20</td><td>136</td><td>–</td><td>186</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+
+        <tr><th rowspan="6">첨단융합</th><td class="l">신소재반도체공학전공</td><td>130</td><td>28</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">반도체디스플레이공학전공</td><td>130</td><td>22</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">분자의약전공</td><td>130</td><td>30</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">바이오나노공학전공</td><td>130</td><td>30</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">지능정보양자공학전공</td><td>130</td><td>20</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">국방전략기술공학과</td><td>130</td><td>22</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>–</td></tr>
+
+        <tr><th>글로벌문화통상</th><td class="l">글로벌문화통상학부</td><td>126</td><td>15</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+
+        <tr><th rowspan="2">커뮤니케이션&amp;컬처</th><td class="l">광고홍보학과/미디어학과</td><td>126</td><td>15</td><td>30</td><td>15</td><td>54</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">문화인류학과/문화콘텐츠학과</td><td>126</td><td>15</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+
+        <tr><th rowspan="3">경상</th><td class="l">공통</td><td>126</td><td>15</td><td>30</td><td>15</td><td>54</td><td>39(30)</td><td>24(9)</td><td>39(30)</td><td>39(21)</td><td>39(21)</td></tr>
+        <tr><td class="l">경제학부</td><td>126</td><td>15</td><td>30</td><td>15</td><td>54</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">회계세무학과</td><td>120</td><td>15</td><td>–</td><td>–</td><td>81</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+
+        <tr><th>디자인</th><td class="l">공통</td><td>126</td><td>15</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+
+        <tr><th rowspan="2">예체능</th><td class="l">공통</td><td>126</td><td>14</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+        <tr><td class="l">무용예술학과</td><td>126</td><td>15</td><td>30</td><td>18</td><td>60</td><td>36(30)</td><td>24(9)</td><td>36(30)</td><td>36(18)</td><td>36(18)</td></tr>
+
+        <tr><th rowspan="3">LIONS칼리지</th><td class="l">LIONS자율전공학부(전계열)</td><td>–</td><td>6</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">LIONS자율전공학부(자연계열)</td><td>–</td><td>6</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+        <tr><td class="l">LIONS자율전공학부(인문사회계열)</td><td>–</td><td>6</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">
+      ▶ ( ) 안의 수치는 전공핵심 이수학점 기준임<br>
+      ▶ 다전공(다중전공, 부전공)을 이수 중인 학생이 다전공 학과의 전공기초를 이수하였을 경우 최대 9학점까지 다전공 전공학점으로 인정함. 단, 다전공 학과에서 별도로 전공기초를 다전공 학생의 전공학점(전공핵심 또는 전공심화)으로 지정한 경우만 전공학점으로 인정 가능<br>
+      ▶ 공학대학 공통: 건축학전공, 교통물류공학과, 전자공학부, 에너지바이오학과, 해양융합공학과, 융합시스템공학과, 스마트융합공학부를 제외한 모든 학과<br>
+      ▶ 경상대학 공통: 경제학부, 회계세무학과를 제외한 모든 학과 · ▶ 예체능대학 공통: 무용예술학과를 제외한 모든 학과
+    </p>
+
+    <h4>편입생의 전적대학 인정학점 및 전공 이수학점</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead>
+        <tr><th rowspan="2">대학</th><th rowspan="2">학과</th><th colspan="2">졸업학점</th><th colspan="3">전적대학 인정학점</th></tr>
+        <tr><th>졸업학점</th><th>전공(전공핵심,전공심화)</th><th>전공(전공핵심)</th><th>일반선택</th><th>계</th></tr>
+      </thead>
+      <tbody>
+        <tr><th rowspan="7">공학</th><td class="l">공통</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">건축학전공</td><td>162</td><td>81(63,18)</td><td>12(9)이하</td><td>640이하</td><td>640이하</td></tr>
+        <tr><td class="l">교통물류공학과</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">전자공학부</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">에너지바이오학과</td><td>130</td><td>39(30,9)</td><td>–</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">해양융합공학과</td><td>130</td><td>39(30,9)</td><td>–</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">융합시스템공학과</td><td>120</td><td>51(–)</td><td>12(9)이하</td><td>600이하</td><td>600이하</td></tr>
+
+        <tr><th rowspan="4">소프트웨어융합</th><td class="l">ICT융합학부/인공지능학과</td><td>140</td><td>45(36,9)</td><td>12(9)이하</td><td>700이하</td><td>700이하</td></tr>
+        <tr><td class="l">컴퓨터학부</td><td>140</td><td>45(36,9)</td><td>12(9)이하</td><td>700이하</td><td>700이하</td></tr>
+        <tr><td class="l">인공지능학과</td><td>140</td><td>45(36,9)</td><td>12(9)이하</td><td>700이하</td><td>700이하</td></tr>
+        <tr><td class="l">수리데이터사이언스학과</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+
+        <tr><th>약학</th><td class="l">약학과(6년제)</td><td>231</td><td>–</td><td>34(32)이하</td><td>770이하</td><td>770이하</td></tr>
+
+        <tr><th rowspan="6">첨단융합</th><td class="l">신소재반도체공학전공</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">반도체디스플레이공학전공</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">분자의약전공</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">바이오나노공학전공</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">지능정보양자공학전공</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+        <tr><td class="l">국방전략기술공학과</td><td>130</td><td>39(30,9)</td><td>12(9)이하</td><td>650이하</td><td>650이하</td></tr>
+
+        <tr><th>글로벌문화통상</th><td class="l">글로벌문화통상학부</td><td>126</td><td>39(30,9)</td><td>–</td><td>630이하</td><td>630이하</td></tr>
+
+        <tr><th rowspan="2">커뮤니케이션&amp;컬처</th><td class="l">광고홍보학과/미디어학과</td><td>126</td><td>39(30,9)</td><td>12(9)이하</td><td>630이하</td><td>630이하</td></tr>
+        <tr><td class="l">문화인류학과/문화콘텐츠학과</td><td>126</td><td>39(30,9)</td><td>12(9)이하</td><td>630이하</td><td>630이하</td></tr>
+
+        <tr><th rowspan="3">경상</th><td class="l">공통</td><td>126</td><td>39(30,9)</td><td>12(9)이하</td><td>630이하</td><td>630이하</td></tr>
+        <tr><td class="l">경제학부</td><td>126</td><td>39(30,9)</td><td>12(9)이하</td><td>630이하</td><td>630이하</td></tr>
+        <tr><td class="l">회계세무학과</td><td>120</td><td>39(–)</td><td>12(9)이하</td><td>600이하</td><td>600이하</td></tr>
+
+        <tr><th>디자인</th><td class="l">공통</td><td>126</td><td>39(30,9)</td><td>12(9)이하</td><td>630이하</td><td>630이하</td></tr>
+
+        <tr><th rowspan="2">예체능</th><td class="l">공통</td><td>126</td><td>39(30,9)</td><td>12(9)이하</td><td>630이하</td><td>630이하</td></tr>
+        <tr><td class="l">무용예술학과</td><td>126</td><td>39(30,9)</td><td>–</td><td>630이하</td><td>630이하</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">
+      ▶ 2027학년도 3학년 편입생(2025학번)부터 적용 · ▶ ( ) 안의 수치: 졸업학점(전공핵심, 전공심화) / 인정학점(전공핵심)<br>
+      ▶ 편입생의 경우 1~2학년에 배정된 전공기초는 이수 의무가 없음<br>
+      ▶ 공학대학 공통: 건축학전공, 교통물류공학과, 전자공학부, 에너지바이오학과, 해양융합공학과, 융합시스템공학과, 스마트융합공학부를 제외한 모든 학과<br>
+      ▶ 경상대학 공통: 경제학부, 회계세무학과를 제외한 모든 학과 · ▶ 예체능대학 공통: 무용예술학과를 제외한 모든 학과
+    </p>
+  </div>
+
+  <div class="card" id="sec5-5">
+    <h3>5. 단과대학 및 학과(부)별 등재가능학점 기준</h3>
+    <p style="font-size:13.6px;color:var(--ink-700);">등재가능학점 기준을 준수하고, 학생들의 전공의무이수학점 이수에 문제가 없도록 개설</p>
+
+    <h4>가. 등재가능학점 지정 기준 및 총괄표</h4>
+    <div class="callout">
+      <b>◆ 전공과목 등재 가능학점 지정 기준</b><br>
+      – 총 재학인원 400명 미만 학과: 전공졸업학점 × 150%<br>
+      &nbsp;&nbsp;단, 공학대학의 공학인증 참여 학과, 첨단융합대학: 전공졸업학점 × 170%<br>
+      &nbsp;&nbsp;공학대학 건축학전공: 전공졸업학점 × 130% · 공학대학 융합시스템공학과: 전공졸업학점 × 130% · 공학대학 스마트융합공학부: 전공졸업학점 × 125%<br>
+      &nbsp;&nbsp;경상대학 회계세무학과: 전공졸업학점 × 120% · 소프트웨어융합대학 컴퓨터학부: 전공졸업학점 × 200% · 디자인대학 융합디자인학부: 전공졸업학점 × 200% · 경상대학 경제학부: 전공졸업학점 × 200%<br>
+      – 총 재학인원 400명 이상 ~ 800명 미만 학과: 전공졸업학점 × 220%<br>
+      &nbsp;&nbsp;· 공학대학 기계공학과, 전자공학부 해당 · 글로벌문화통상대학 글로벌문화통상학부 해당<br>
+      &nbsp;&nbsp;단, 경영학부: 전공졸업학점 × 250%
+    </div>
+
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th style="width:260px;">대학 및 학과</th><th>전공기초</th><th>전공핵심</th><th>전공심화</th><th>(전공계)<br>전공핵심+전공심화</th></tr></thead>
+      <tbody>
+        <tr><td class="l">공학대학 공학인증 미참여 학과</td><td>30 이하</td><td>45 이상</td><td>30 이상</td><td>90 이하</td></tr>
+        <tr><td class="l">공학대학 공학인증 참여 학과*</td><td>30 이하</td><td>45 이상</td><td>30 이상</td><td>102 이하</td></tr>
+        <tr><td class="l">공학대학 건축학전공</td><td>20 이하</td><td>90 이상</td><td>18 이상</td><td>140 이하</td></tr>
+        <tr><td class="l">공학대학 기계공학과/전자공학부</td><td>30 이하</td><td>45 이상</td><td>30 이상</td><td>132 이하</td></tr>
+        <tr><td class="l">공학대학 융합시스템공학과</td><td>21 이하</td><td>–</td><td>–</td><td>105 이하</td></tr>
+        <tr><td class="l">공학대학 스마트융합공학부</td><td>–</td><td>–</td><td>–</td><td>120 이하</td></tr>
+        <tr><td class="l">공학대학 에너지바이오학과</td><td>24 이하</td><td>45 이상</td><td>30 이상</td><td>90 이하</td></tr>
+        <tr><td class="l">소프트웨어융합대학 ICT융합학부/인공지능학과</td><td>18 이하</td><td>54 이상</td><td>36 이상</td><td>113 이하</td></tr>
+        <tr><td class="l">소프트웨어융합대학 컴퓨터학부</td><td>24 이하</td><td>54 이상</td><td>36 이상</td><td>150 이하</td></tr>
+        <tr><td class="l">소프트웨어융합대학 수리데이터사이언스학과</td><td>24 이하</td><td>45 이상</td><td>30 이상</td><td>90 이하</td></tr>
+        <tr><td class="l">약학대학</td><td>20 이하</td><td>154~201</td><td>–</td><td>279 이하</td></tr>
+        <tr><td class="l">첨단융합대학</td><td>30 이하</td><td>45 이상</td><td>30 이상</td><td>102 이하</td></tr>
+        <tr><td class="l">글로벌문화통상대학</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>–</td></tr>
+        <tr><td class="l">커뮤니케이션&amp;컬처대학 광고홍보학과/미디어학과</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>81 이하</td></tr>
+        <tr><td class="l">커뮤니케이션&amp;컬처대학 문화인류학과/문화콘텐츠학과</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>90 이하</td></tr>
+        <tr><td class="l">경상대학 경제학부</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>108 이하</td></tr>
+        <tr><td class="l">경상대학 경영학부</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>135 이하</td></tr>
+        <tr><td class="l">경상대학 보험계리학과</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>81 이하</td></tr>
+        <tr><td class="l">경상대학 회계세무학과</td><td>15 이하</td><td>–</td><td>–</td><td>96 이하</td></tr>
+        <tr><td class="l">디자인대학 주얼리·패션디자인학과/영상디자인학과</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>90 이하</td></tr>
+        <tr><td class="l">디자인대학 융합디자인학부</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>120 이하</td></tr>
+        <tr><td class="l">예체능대학</td><td>15 이하</td><td>45 이상</td><td>30 이상</td><td>90 이하</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">*공학인증 참여 학과(총 5개): 건축공학전공, 건설환경공학과, 교통물류공학과, 로봇공학과, 해양융합공학과</p>
+
+    <h4>나. 등재가능학점 계산 제외 과목</h4>
+    <ul class="bullets">
+      <li>캡스톤디자인</li>
+      <li>연구실심화실습1~4</li>
+      <li>교직전공 교과목</li>
+      <li>IC-PBL 전용 교과목 — 학과당 3학점 범위 내에서 초과 인정</li>
+      <li>혁신형 모듈에서 교무처 및 교육과정위원회의 승인을 받은 교과목</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= SECTION VI ================= -->
+<section class="doc-section" id="sec6">
+  <div class="sec-head"><div class="sec-num">Ⅵ</div><h2>전공교육과정 편성 및 개편 지침</h2></div>
+
+  <div class="card" id="sec6-1">
+    <h3>1. 교육과정 개편 기본 방향 수립</h3>
+    <ul class="bullets">
+      <li>단과대학 및 학과(부)에서는 한양대학교 교육과정이 추구하는 전체 방향성을 이해하고, 교육과정 편성지침에 맞추어 교육과정 개편의 기본방향과 전략 수립</li>
+      <li>기업체(산업체) 및 학생들의 의견을 반영하고, 학문분야별 공인인증기관의 요건을 충족시키기 위한 전략 수립</li>
+      <li>지난 교육과정 운영 경험에 비추어 개선점을 파악하고 대안 마련</li>
+    </ul>
+  </div>
+
+  <div class="card" id="sec6-2">
+    <h3>2. 학과 교육과정 편성 기본 지침</h3>
+
+    <h4>가. 교양 교육과정 편성 — 1) 교양필수 교과목</h4>
+    <ul class="bullets"><li>학교에서 정책적으로 지정한 교양필수 교과목으로, 2025-2028 교육과정 중 기초 교육 과목으로 개설해야 하는 과목으로, 관장학과에서 관리가 용이하도록 설강학기를 조정한 후 교무처에서 일괄 편성</li></ul>
+
+    <h4>나. 전공 교육과정 편성</h4>
+    <p style="font-size:13.4px;color:var(--ink-700);">단과대학 및 학과(부)에서는 전공 교과목의 편성 원칙과 기본 방향을 설정함. 전공교육과정은 이수구분별로 전공기초(Basic)–전공핵심(Core)–전공심화(Advanced)로 연결되도록 구성하며, 이를 바탕으로 전공모듈을 구성하여 전공교육과정을 완성함</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-body"><b>등재 가능학점 총괄 기준 준수</b><p>학과별 등재 가능학점 총괄 기준을 준수하여 등재 가능 범위 이내로 전공 교과목을 편성함</p></div>
+      </div>
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-body"><b>학년/학기별 균형 있는 교과목 편성</b>
+          <p>이수구분별 편성 기준 — 전공기초(Basic): 1학년에 편성, 3-4학년에는 편성 불가 (학과별 지정 학점 15~30학점 내에서 편성) · 전공핵심(Core): 1,2,3학년에 편성 가능 · 전공심화(Advanced): 3,4학년에 편성 가능</p>
+          <p>4학년 교육과정 편성 시, 본인의 경력 비전을 달성할 수 있는 준비기로서 경력 개발을 지원하고 촉진할 수 있는 과목을 개설하는 것을 원칙으로 함(대학원 준비, 전공별 취업 준비, 취업(인턴십), 고시 준비, 기타 자격고시 준비, 부전공 완성, 다중전공 완성 등)</p>
+          <p>학기에 따라 개설되는 전공 교과목의 이수구분이 편중되지 않도록 전공기초, 전공핵심, 전공심화 교과목 모두 1학기와 2학기에 균등히 배분하여 편성함</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-body"><b>영어전용강좌 고정 운영과목 지정 필수</b>
+          <p>전 학과에서는 영어전용강좌 고정 운영과목을 지정하여 편성하고, 해당 과목은 2025-2028 교육과정 전체 기간 동안 영어전용강좌로 운영함(담당 교강사가 변경될 경우에도 반드시 영어전용강좌로 운영). 단, 영어전용강좌 의무 제외 학과는 별도 기준 적용</p>
+          <p>학년별 편성 기준: 4과목 이상 지정(학기당 최소 2과목 이상) · 1학년 개설과목은 제외하며, 2-4학년 전공과목 중 지정</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-body"><b>계열별 실험·실습 비율 준수 권고</b>
+          <div class="table-wrap">
+          <table class="dtable">
+            <thead><tr><th>구분</th><th>공학계열</th><th>자연과학계열</th><th>인문사회계열</th><th>예체능계열</th></tr></thead>
+            <tbody><tr><td class="l">실험·실습 권고비율</td><td>35% 이상</td><td>30% 이상</td><td>25% 이상</td><td>80% 이상</td></tr></tbody>
+          </table>
+          </div>
+          <p style="font-size:11.6px;color:var(--ink-500);">※ 상기 권고비율은 한국대학교육평가원에서 시행하는 대학기관평가인증에 근거함 · 산출식: (이론+실습, 실습 과목 학점의 합) / 전체 과목 학점의 합</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-body"><b>전공과목교류제도(Code Share) 운영</b>
+          <p><b>정의</b> — A학과의 교육과정에는 등재되지 않은 과목이지만, A학과와 B학과의 협의에 의해 지정된 공통 교과목(Code Share)을 A학과 학생이 B학과에서 수강하게 되면 전공학점으로 인정하는 제도</p>
+          <p><b>목적</b> — 전공 간의 융합 교육을 활성화하여 융합적 인재 양성 / 전공 수업에 대한 학생들의 다양한 요구를 충족하여 전공과목 선택권 확장 / 전공 간 중복되는 내용의 전공과목을 일원화하여 효율적인 교육과정 운영 가능</p>
+          <p>매 학기 전공시간표 편성 기간(6월, 12월)에 신청하며, 세부 사항은 별도로 정함. 과목의 성격이나 내용이 유사한 과목의 경우, 학생이 이중적인 내용을 중복 학습할 가능성이 있으므로 공통 교과목 지정이 불가함</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-body"><b>학과(전공)별 전공 필수이수과목 지정 신청</b>
+          <p>2020-2023 교육과정부터 전공핵심(필수) 이수구분이 폐지됨에 따라, 전공 교육과정에서 별도의 전공 필수이수과목을 지정하지 않는 것을 원칙으로 함</p>
+          <p>다만, 학과(전공)별 특성에 따라 부득이하게 전공 필수이수과목의 지정이 필요할 경우 전공핵심 및 전공심화 교과목 중 최대 12학점 이내에서 별도로 지정 신청 가능 (세부 사항은 별도로 정함)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="sec6-3">
+    <h3>3. 학과 교육과정 개편 지침</h3>
+
+    <h4>가. 학과 교육과정 개편 시기</h4>
+    <div class="pill-row">
+      <span class="pill outline">정기개편 — 통상 4년 주기로 시행</span>
+      <span class="pill outline">수시개편 — 1학기 주기(4월, 10월)로 제한적 시행</span>
+    </div>
+
+    <h4>나. 학과 교과목 신설</h4>
+    <ul class="bullets">
+      <li><b>교과목 신설 권장</b> — 학과별 등재 가능학점 내에서 2025-2028 교육과정 개편 기본 방향 및 사회 변화로 인한 필요성에 따른 교과목 개발 적극 권장</li>
+      <li><b>학수번호 배정 원칙</b> — 교과목명과 학수번호는 1:1 연결 원칙에 따라, 개설 이력이 있는 교과목명은 기본적으로 기존 학수번호가 부여됨</li>
+      <li><b>학점-강의-실습시간 원칙</b> — 전공 교과목의 3학점 개설이 원칙임(기본 학점-강의-실습시간: 3-3-0). 학점수 = 수업시수(강의시수+실습시수), 실습시간 50% 인정 대학 및 특정 교과목에 한해 학점수 = 수업시수(강의시수 + 실습시수1/2)</li>
+      <li>실습시간 50% 인정: 공학대학, 소프트웨어융합대학, 과학기술융합대학, 약학대학, 창의융합교육원, 소프트웨어융합원에서 관장하는 실험·실습 교과목</li>
+      <li><b>등재 후 교과목 개요서 입력</b> — 관장학과에서는 학수번호가 부여된 신규 교과목에 대한 국문 및 영문 교과목 개요서를 교내정보시스템에 입력함</li>
+      <li><b>유사 신규 교과목 신설 불가</b> — 성적상승 재수강 불가, 유사과목 수강 조장 우려 등의 이유로 기존 교과목과 교육 내용상 차이가 없는 교과목은 신설 대상에서 제외함</li>
+      <li><b>과거 필수 교과목 재개설 불가</b> — 학과에서 이미 폐지된 필수 교과목의 경우, 해당 교육과정 적용자의 졸업에 차질을 줄 수 있으므로 신설 대상에서 제외함</li>
+    </ul>
+
+    <div class="table-wrap">
+    <table class="dtable">
+      <caption>◆ 강의 시간 수 배정 원칙 (교육과정 편성 시 절대 준수)</caption>
+      <thead><tr><th>학점</th><th>학점-강의-실습</th><th>허용 여부</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">1학점</td><td>1-1-0</td><td>전 대학 허용</td></tr>
+        <tr><td>1-0-1</td><td>전 대학 허용</td></tr>
+        <tr><td>1-0-2</td><td>실습시간 50% 인정대학만 허용</td></tr>
+        <tr><td rowspan="5">2학점</td><td>2-2-0</td><td>전 대학 허용</td></tr>
+        <tr><td>2-1-1</td><td>전 대학 허용</td></tr>
+        <tr><td>2-1-2</td><td>실습시간 50% 인정대학만 허용</td></tr>
+        <tr><td>2-0-2</td><td>전 대학 허용</td></tr>
+        <tr><td>2-0-4</td><td>실습시간 50% 인정대학만 허용</td></tr>
+        <tr><td rowspan="7">3학점</td><td>3-3-0</td><td>전 대학 허용</td></tr>
+        <tr><td>3-1-2</td><td>전 대학 허용</td></tr>
+        <tr><td>3-1-4</td><td>실습시간 50% 인정대학만 허용</td></tr>
+        <tr><td>3-2-1</td><td>전 대학 허용</td></tr>
+        <tr><td>3-2-2</td><td>실습시간 50% 인정대학만 허용</td></tr>
+        <tr><td>3-0-3</td><td>전 대학 허용</td></tr>
+        <tr><td>3-0-6</td><td>실습시간 50% 인정대학만 허용</td></tr>
+        <tr><td>4학점 이상</td><td colspan="2">학점-강의-실습시간 배정 원칙 범위 내에서 인정</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>다. 학과 교과목 폐지</h4>
+    <ul class="bullets">
+      <li><b>폐강과목 사전 예고제 실시</b> — 각 학과에서는 폐강 예정인 교과목을 1년 전에 공지하는 '폐강 과목 사전 예고제'를 실시하여 학생들의 혼란을 미연에 방지하도록 함</li>
+      <li><b>개설 실적 저조 교과목 폐지</b> — 교육과정 등재 이후 개설이 시작된 시점부터 2년 연속 개설되지 않은 교과목은 폐지함</li>
+      <li><b>추가 폐지 대상 교과목</b> — 시대의 흐름에 맞지 않는 교과목, 교강사 수급이 불가능한 교과목, 폐강 대상에 빈번히 포함되는 교과목은 폐지 대상임</li>
+      <li><b>수시개편 시 필수 교과목 폐지 불가</b> — 전공기초 등 필수과목은 수시개편 시 폐지 불가</li>
+    </ul>
+
+    <h4>라. 학과 교과목명 변경</h4>
+    <ul class="bullets">
+      <li>교과목명과 학수번호는 1:1 연결 원칙을 따르며, 개설 이력이 있는 교과목명은 기존 학수번호가 부여됨</li>
+      <li>한양대학교 내 개설 이력이 있는 교과목의 경우 교과목명은 재학생과 졸업생, 과거 담당 교강사의 혼란을 야기할 수 있으므로 변경할 수 없음(단, 학과 간 통합 및 학과명 변경으로 인해 교과목명 변경이 불가피할 경우 각 학과별 교육과정위원회에서 결정한 후 교무처로 요청할 수 있음)</li>
+    </ul>
+
+    <h4>마. 그 외 교과목 정보 변경</h4>
+    <ul class="bullets"><li>학과 내에서 개설 이력이 있는 교과목의 학년, 학기, 과목구분, 학점-강의-실습시간 변경은 재학생의 수강 및 졸업 계획에 혼란과 차질을 줄 수 있으므로, 불가피한 경우에 한하여 교육과정위원회 심의를 통해 변경 가능 여부를 결정함</li></ul>
+
+    <h4>바. 대치/동일과목 지정</h4>
+    <ul class="bullets">
+      <li><b>대치 교과목</b> — 2020-2023 교육과정에 등재된 교과목의 커리큘럼에서 약 50% 내외의 내용이 변경되어 2025-2028 교육과정에 과목명과 함께 내용이 변경된 교과목. 2020-2023 교육과정에서 기존에 이수한 학생들은 재수강과 최초수강 중 선택 가능</li>
+      <li><b>동일 교과목</b> — 2020-2023 교육과정에 등재된 교과목의 커리큘럼과 100% 동일한 내용이며, 2025-2028 교육과정에 단순히 과목명만 변경된 교과목. 재수강만 가능</li>
+      <li><b>대치/동일 교과목 지정 대상 교과목</b> — 2020-2023 교육과정에서 폐지 후 2025-2028 교육과정에 변경하여 신설되는 교과목</li>
+    </ul>
+  </div>
+
+  <div class="card" id="sec6-4">
+    <h3>4. 모듈형 전공교육과정 개편 상세 절차 및 가이드</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-body"><b>환경 및 요구 분석</b>
+          <p>외부 환경 분석: 전공분야 관련 산업 동향, 학문 트렌드 등</p>
+          <p>내부 환경 분석: 학과 현황, 졸업생 취업 현황, 2020-2023 교육과정 운영 평가</p>
+          <p>학생 요구 분석: 설문조사 진행 및 학과별 희망수업TF 구성(졸업생 포함) · 산업체 요구 분석(IAB 등)</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-body"><b>교육목표 및 전략 수립</b>
+          <p>대학의 인재상(교육목표), 최신 발전계획 등을 반영하여 학과 교육목표 업데이트 · 4차산업혁명교육, 사회가치창출교육(SDGs, ESG 등) 반영</p>
+          <p>학과(부)의 교육목표 달성, 학생 만족도 향상, 취업률 제고 등을 위한 학과 전략 제시</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-body"><b>전공모듈 구성</b>
+          <p>전공 관련 주요 직무분야를 연계한 전공모듈 도입 · 모듈별 전공능력(핵심 목표) 설정 · 모듈별 핵심역량 &amp; 핵심지식/기술 제시</p>
+          <div class="flowchart" style="grid-template-columns:repeat(4,1fr);margin-top:10px;">
+            <div class="fnode"><b>직무연계</b><span>[전공모듈 설정]</span></div>
+            <div class="arrow">›</div>
+            <div class="fnode"><b>모듈별</b><span>[전공능력 설정]</span></div>
+            <div class="arrow">›</div>
+            <div class="fnode"><b>모듈별</b><span>[교육과정 편성]</span></div>
+            <div class="arrow">›</div>
+            <div class="fnode"><b>모듈유형 결정</b><span>혁신형 유형 선택</span></div>
+          </div>
+          <p style="font-size:11.6px;color:var(--ink-500);margin-top:8px;">전공능력 설정 시, 대학기본역량진단에서 제시한 정의에 부합하도록 하고 한양핵심역량(비판적사고, 창의, 도전, 소통, 협업, 공감, 나눔 등)을 균형 있게 반영</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-body"><b>교육과정 편성</b><p>직무연계 모듈형 기반 전공교육과정 편성 — 전공능력 함양에 필요한 전공 교과목, 비교과 프로그램, 현장실습 등으로 구성</p></div>
+      </div>
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-body"><b>모듈형 교육과정 이수체계도 작성</b><p>학생들의 원활한 학업 이수를 위한 전공모듈 이수체계도 작성</p></div>
+      </div>
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-body"><b>운영·평가 및 환류계획 제시</b>
+          <p>직무연계 모듈형 전공교육과정 운영·평가 및 환류계획 제시</p>
+          <p>학과에서 편성한 직무연계 모듈형 전공교육과정의 홍보 및 수강지도 방안 마련(주기적인 지도 교육, 학과 홈페이지 등 커뮤니티 활성화, IC-PBL 과비전설계, 지도교수제도 등 적극 활용)</p>
+          <p>교육 효과 및 학생 만족도에 대한 주기적 점검 체계 구축(학과 취업률, 학생만족도 조사, 강의평가 등)</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">7</div>
+        <div class="step-body"><b>모듈형 전공교육 플랫폼 운영</b>
+          <p>직무연계 모듈형 전공교육을 위한 대학 통합 홈페이지 구축 및 오픈</p>
+          <p>전공부터 교양, 비교과 프로그램, 진로 설계까지 안내하는 원스톱 플랫폼 운영</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX ================= -->
+<section class="doc-section" id="sec7">
+  <div class="sec-head"><div class="sec-num">부록</div><h2>교직과정 안내</h2></div>
+
+  <div class="card">
+    <h3>교직과정 이수자의 무시험검정 합격 기준 (비사범계)</h3>
+    <div class="table-wrap">
+    <table class="dtable" style="min-width:920px;">
+      <thead><tr><th style="width:100px;">구분</th><th>2009-2012학년도 입학자<br>(2011-2014학년도 편입자 포함)</th><th>2013학년도 이후 입학자부터<br>(2015학년도 이후 편입학자)</th></tr></thead>
+      <tbody>
+        <tr>
+          <th>전공과목</th>
+          <td class="l">
+            <b>50학점 이상</b><br>
+            · 기본이수과목 21학점 — 7개 영역 7과목 이상<br>
+            · 교과교육영역 8학점 이상 포함: ①교과교육론(3학점) ②교과교재연구 및 지도(3학점) ③논리 및 논술(2학점)<br>
+            <span style="font-size:11.5px;color:var(--ink-500);">* 교과교육영역 3개 과목은 교직과목의 이수 요구학점(22학점)으로 반영되지 않으나 교직 이수 예정자에 한하여 위 교직기준상 전공학점 조건(50학점 이상)에 포함되고 전공심화(교직이수예정자가 아닌 학생은 이수제한 있음)로 분류됩니다.</span>
+          </td>
+          <td class="l" style="text-align:center;">좌 동</td>
+        </tr>
+        <tr>
+          <th>교직과목</th>
+          <td class="l">
+            <b>22학점(11과목) 이상</b><br>
+            · 교직이론 14학점(7과목) 이상: ①교육학개론 ②교육심리학 ③교육철학 및 교육사 ④교육사회학 ⑤교육과정론 ⑥교육평가론 ⑦교육행정 및 경영 ⑧교육방법 및 공학 ⑨생활지도 및 상담 ⑩교육연구방법론 ⇒ 7과목 이상<br>
+            <span style="font-size:11.5px;color:var(--ink-500);">(교육연구방법론은 2013년까지 이수한 경우에만 인정하며 2014년부터는 개설하지 않음)</span><br>
+            · 교직소양 4학점(2과목) 이상: ①특수교육학개론(2학점) ②교직실무(2학점)<br>
+            · 교육실습 4학점(2과목) 이상: ①교육실습(2학점) ②교육봉사활동(2학점/60시간 이상 봉사)
+          </td>
+          <td class="l">
+            <b>22학점(11과목) 이상</b><br>
+            · 교직이론 12학점(6과목) 이상: ①교육학개론 ②교육심리학 ③교육철학 및 교육사 ④교육사회학 ⑤교육과정론 ⑥교육평가론 ⑦교육행정 및 경영 ⑧교육방법 및 공학 ⑨생활지도 및 상담 ⇒ 6과목 이상<br>
+            · 교직소양 6학점(3과목) 이상: ①특수교육학개론(2학점) ②교직실무(2학점) ③학교폭력 예방 및 학생의 이해(2학점)<br>
+            · 교육실습 4학점(2과목) 이상: ①교육실습(2학점) ②교육봉사활동(2학점/60시간 이상 봉사)
+          </td>
+        </tr>
+        <tr>
+          <th>성적기준</th>
+          <td class="l">졸업 전체평균성적 75/100점 이상</td>
+          <td class="l">전공평균성적 75/100점 이상, 교직평균성적 80/100점 이상</td>
+        </tr>
+        <tr>
+          <th>기타</th>
+          <td class="l">
+            교직 적성 및 인성검사 적격판정 1회 이상 · 응급처치 및 심폐소생술 2회 이상<br>
+            <span style="font-size:11.5px;color:var(--ink-500);">(단, 2016.3.1. 시행일 당시 교원양성과정을 이수할 때까지 2학기의 교원양성과정이 남은 자는 1회 실시)</span>
+          </td>
+          <td class="l">
+            교직 적성 및 인성검사 적격판정 2회 이상 · 응급처치 및 심폐소생술 2회 이상<br>
+            2021학년도 입학자부터 성인지교육 2회 이수 필수 · 2021.2.9. 기준 교원양성과정 이수 기간이 2학기를 초과하는 자는 성인지교육 2회 이수 필수<br>
+            결격 사유 확인(성범죄 이력 및 중독 여부)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>이수과목 확인</h4>
+    <ul class="bullets">
+      <li>기본이수 과목: 학과별 기본이수 과목</li>
+      <li>교과교육 영역: 3과목 이상 8학점 이상 모두 충족(전공과목에 포함)</li>
+    </ul>
+
+    <div class="table-wrap">
+    <table class="dtable" style="min-width:920px;">
+      <thead><tr><th style="width:100px;">구분</th><th>2009-2012학년도 입학자<br>(2011-2014학년도 편입자 포함)</th><th>2013학년도 이후 입학자부터<br>(2015학년도 이후 편입학자)</th></tr></thead>
+      <tbody>
+        <tr>
+          <th>교직이론<br>과목명</th>
+          <td class="l">①교육학개론 ②교육심리학 ③교육철학 및 교육사 ④교육사회학 ⑤교육과정론 ⑥교육평가론 ⑦교육행정 및 경영 ⑧교육방법 및 공학 ⑨생활지도 및 상담 ⑩교육연구방법론<br>※ 반드시 7과목 이상, 14학점 이상 모두 충족</td>
+          <td class="l">①교육학개론 ②교육심리학 ③교육철학 및 교육사 ④교육사회학 ⑤교육과정론 ⑥교육평가론 ⑦교육행정 및 경영 ⑧교육방법 및 공학 ⑨생활지도 및 상담<br>※ 반드시 6과목 이상, 12학점 이상 모두 충족</td>
+        </tr>
+        <tr>
+          <th>교직소양<br>과목명</th>
+          <td class="l">4학점(2과목) 이상: ①특수교육학개론(2학점) ②교직실무(2학점)</td>
+          <td class="l">6학점(3과목) 이상: ①특수교육학개론(2학점) ②교직실무(2학점) ③학교폭력 예방 및 학생의 이해(2학점)</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">※ 위에 기재되지 않은 과목은 교직 선택 과목에 포함되지 않습니다. · 교육실습 영역: 4학점(현장학교 교육실습(2학점), 교육봉사활동(2학점/60시간 이상 봉사))</p>
+
+    <h4>ERICA 교직과정 설치학과</h4>
+    <div class="table-wrap">
+    <table class="dtable">
+      <thead><tr><th>대학</th><th>학과명(전공명)</th><th>승인인원</th><th>표시과목</th></tr></thead>
+      <tbody>
+        <tr><th rowspan="4">국제문화대학</th><td class="l">중국학과</td><td>1</td><td>중국어</td></tr>
+        <tr><td class="l">일본학과</td><td>1</td><td>일본어</td></tr>
+        <tr><td class="l">영미언어·문화학과</td><td>2</td><td>영어</td></tr>
+        <tr><td class="l">프랑스학과</td><td>1</td><td>프랑스어</td></tr>
+        <tr><th rowspan="2">경상대학</th><td class="l">경제학부</td><td>1</td><td>일반사회</td></tr>
+        <tr><td class="l">경영학부</td><td>1</td><td>상업</td></tr>
+        <tr><th>디자인대학</th><td class="l">융합디자인학부</td><td>2</td><td>디자인</td></tr>
+        <tr><th rowspan="3">예체능대학</th><td class="l">스포츠과학부(스포츠문화전공)</td><td>2</td><td>체육</td></tr>
+        <tr><td class="l">스포츠과학부(스포츠코칭전공)</td><td>2</td><td>체육</td></tr>
+        <tr><td class="l">무용예술학과</td><td>1</td><td>체육</td></tr>
+        <tr><th colspan="2">계</th><td colspan="2">14</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-note">* 상기는 2024학년도 교육부 교직과정 정기승인 된 개설학과이며, 관련 학과는 교육부 평가, 학제 개편 등에 따라 변경될 수 있음(ERICA 교직정보 홈페이지 참조 asteaching.hanyang.ac.kr)<br>
+    * 국제문화대학, 디자인대학은 2025학년도 학제 개편 및 국가의 관계 법령에 따라 교직과정 대상에서 제외될 수 있음</p>
+  </div>
+</section>
+
+</main>
+</div>
+</div>
+
+<footer>
+  <div>원본 문서: <b>한양대학교 ERICA 학부 2025-2028 교육과정 편성지침</b> (2024. 05. 제정)</div>
+  <div style="margin-top:6px;">본 페이지는 원본 지침 PDF를 바탕으로 제작된 정리용 웹페이지이며, 실제 학사 운영 기준은 교무처 공지 및 원본 문서를 따릅니다.</div>
+</footer>
+
+<button class="totop" id="totop" title="맨 위로">↑</button>
+
+<script>
+  // Mobile drawer
+  var menuBtn = document.getElementById('menuBtn');
+  var drawer = document.getElementById('drawer');
+  var backdrop = document.getElementById('backdrop');
+  var drawerClose = document.getElementById('drawerClose');
+  function openDrawer(){ drawer.classList.add('show'); backdrop.classList.add('show'); }
+  function closeDrawer(){ drawer.classList.remove('show'); backdrop.classList.remove('show'); }
+  menuBtn && menuBtn.addEventListener('click', openDrawer);
+  drawerClose && drawerClose.addEventListener('click', closeDrawer);
+  backdrop && backdrop.addEventListener('click', closeDrawer);
+  drawer && drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeDrawer); });
+
+  // Back to top
+  var totop = document.getElementById('totop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 500) totop.classList.add('show'); else totop.classList.remove('show');
+  });
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  // Scrollspy for desktop nav + sidebar
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section.doc-section'));
+  var navLinks = document.querySelectorAll('nav.desktop-nav a, aside.toc a, .drawer a');
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var currentId = sections.length ? sections[0].id : null;
+    sections.forEach(function(sec){ if(sec.offsetTop <= pos) currentId = sec.id; });
+    navLinks.forEach(function(a){
+      var href = a.getAttribute('href');
+      a.classList.toggle('active', href === '#' + currentId);
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+
+</body>
+</html>
